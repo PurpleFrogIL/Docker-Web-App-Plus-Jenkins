@@ -1,4 +1,4 @@
-# Assignment-5-Docker-Web-App
+# Docker Web App (Assignment 5)
 ## Created by Dror Felman
 
 ### Prerequisits:
