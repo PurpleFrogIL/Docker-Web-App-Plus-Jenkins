@@ -15,3 +15,5 @@ RUN pip install -r requirements.txt
 RUN rm requirements.txt
 
 COPY app.py app.py
+
+ENTRYPOINT FLASK_APP=./app.py flask run --host=0.0.0.0
