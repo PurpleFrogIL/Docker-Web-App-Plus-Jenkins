@@ -3,7 +3,7 @@
 
 ### Instructions:
 ---
-#### Hello Web
+#### Hello Web (ex1)
 ##### Prerequisites:
 - Python 3 installed
 - Flask python-package installed (can be in a virtual environment)
@@ -14,7 +14,7 @@
 1. You should see a webpage with the writing "Hello, World!".
 1. Press Ctrl+C to stop the script.
 ---
-#### Hello Docker
+#### Hello Docker (ex2)
 ##### Prerequisites:
 - A Linux machine
 - Docker installed
