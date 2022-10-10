@@ -1,7 +1,7 @@
 # Docker Web App (Assignment 5)
 ## Created by Dror Felman
 
-### Prerequisits:
+### Prerequisites:
 - A Linux machine
 - Docker installed
 ### Usage:
