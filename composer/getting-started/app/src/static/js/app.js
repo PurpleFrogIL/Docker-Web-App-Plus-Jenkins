@@ -4,9 +4,13 @@ function App() {
         <Container>
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
-                    <p className="text-center">This is a Fork by Dror Felman</p>
+                    <h5 className="text-center">This is a Fork by Dror Felman</h5>
                 </Col>
             </Row>
+            <Row><p></p></Row>
+            <Row><p></p></Row>
+            <Row><p></p></Row>
+            <Row><p></p></Row>
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
                     <TodoListCard />
