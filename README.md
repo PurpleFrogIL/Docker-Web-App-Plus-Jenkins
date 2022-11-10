@@ -2,6 +2,9 @@
 ## Created by Dror Felman
 
 ### Instructions:
+Instructions for each part of the project appear below.
+
+- First, you need to clone the repository: Click the "clone" button above and click "copy", then open a terminal in a directory of your choice and run `git clone <the link you copied>`.
 ---
 #### Hello Web (ex1)
 ##### Prerequisites:
@@ -32,9 +35,10 @@
 #### Composer (ex3)
 ##### Prerequisites:
 - A Linux machine
-- Docker installed
+- Docker installed (including the `docker-compose` command)
 ##### Usage:
-1. `cd` to directory "composer/app" in the cloned repository.
+1. `cd` to directory "composer" in the cloned repository.
+1. Create a file named ".env" with the following text: MYSQL_PASSWORD="<password>", where "password" is a password of your choice for the MySQL server. For example: MYSQL_PASSWORD="abc123".
 1. `$ docker-compose up -d`
 1. Open a web browser.
 1. For the URL use [localhost:3000](http://localhost:3000).
@@ -42,4 +46,9 @@
 1. You can add items to the list as you please.
 1. run `$ docker-compose down` to stop all parts of the app.
 1. Go to the `docker-compose up -d` step when you want to re-run the app. Your previously added items should appear on the list.
+
+###### Changing the password:
+1. `docker-compose down --volumes`
+1. Change password in the ".env" file
+1. Now you can run the app again using `docker-compose up -d`
 ---
