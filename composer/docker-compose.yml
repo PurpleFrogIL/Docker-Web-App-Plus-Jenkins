@@ -5,11 +5,6 @@ services:
         env_file: .env
         image: node:12-alpine
         command: sh -c "yarn install && yarn run dev"
-        # command: ["yarn", "install", "--production"]
-        # command: yarn install --production
-        # command: sh -c "yarn install --production"
-        # command: sh -c "yarn install --production && node /app/src/index.js"
-        # entrypoint: ["node", "/app/src/index.js"]
         restart: always
         ports:
             - 3000:3000
