@@ -1,9 +1,8 @@
 version: "3.7"
 
-# env_file: .env
-
 services:
     app:
+        env_file: .env
         image: node:12-alpine
         command: sh -c "yarn install && yarn run dev"
         # command: ["yarn", "install", "--production"]
@@ -11,6 +10,7 @@ services:
         # command: sh -c "yarn install --production"
         # command: sh -c "yarn install --production && node /app/src/index.js"
         # entrypoint: ["node", "/app/src/index.js"]
+        restart: always
         ports:
             - 3000:3000
         working_dir: /app
@@ -22,7 +22,9 @@ services:
             MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
             MYSQL_DB: todos
     mysql:
+        env_file: .env
         image: mysql:5.7
+        restart: always
         volumes:
             - todo-mysql-data:/var/lib/mysql
         environment:
