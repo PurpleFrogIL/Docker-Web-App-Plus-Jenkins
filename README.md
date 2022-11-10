@@ -38,7 +38,7 @@ Instructions for each part of the project appear below.
 - Docker installed (including the `docker-compose` command)
 ##### Usage:
 1. `cd` to directory "composer" in the cloned repository.
-1. Create a file named ".env" with the following text: MYSQL_PASSWORD="<password>", where "password" is a password of your choice for the MySQL server. For example: MYSQL_PASSWORD="abc123".
+1. Create a file named ".env" with the following text: MYSQL_PASSWORD="YOUR_PASSWORD", where "YOUR_PASSWORD" is a password of your choice for the MySQL server. For example: MYSQL_PASSWORD="abc123".
 1. `$ docker-compose up -d`
 1. Open a web browser.
 1. For the URL use [localhost:3000](http://localhost:3000).
