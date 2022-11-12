@@ -9,7 +9,7 @@ pipeline {
                 echo "ssh to build server: hostnamectl"
                 """
                 sh """
-                ssh ec2-user@172.31.87.158 hostnamectl"
+                ssh ec2-user@172.31.87.158 hostnamectl
                 """
             }
         }
