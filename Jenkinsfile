@@ -1,16 +1,12 @@
 pipeline {
-    agent any
-
+    agent none
     stages {
-        stage('Hello') {
+        stage('Build') {
+            agent { label 'build && x86-64' }
             steps {
-                echo 'Hello World'
-                sh """
-                echo "ssh to build server: hostnamectl"
-                """
-                sh """
-                ssh ec2-user@172.31.87.158 hostnamectl
-                """
+                sh 'echo "testing on $HOSTNAME"'
+                checkout(
+                    [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub-ec2-user', url: 'git@github.com:PurpleFrogIL/Docker-Web-App-Plus-Jenkins.git']]])
             }
         }
     }
