@@ -12,7 +12,7 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 dir('composer') {
-                    sh 'docker-compose down --volume'
+                    // sh 'docker-compose down --volume'
                     writeFile file: '.env', text: 'abc123'
                     sh 'docker-compose up -d --build'
                 }
