@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             agent { label 'build && x86-64' }
             steps {
-                sh 'cd ./workspace/Docker-Compose-Test/composer/'
+                sh 'cd composer'
                 sh 'docker-compose build'
             }
         }
