@@ -13,7 +13,7 @@ pipeline {
             steps {
                 dir('composer') {
                     sh 'docker-compose down --volume'
-                    sh 'echo "abc123" > .env'
+                    writeFile file: 'Docker-Compose-Test/composer/.env', text: 'abc123'
                     sh 'docker-compose up -d --build'
                 }
             }
