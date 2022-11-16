@@ -12,9 +12,8 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 dir('composer') {
-                    sh 'pwd'
+                    sh 'docker-compose build'
                 }
-                // sh 'docker-compose build'
             }
         }
     }
