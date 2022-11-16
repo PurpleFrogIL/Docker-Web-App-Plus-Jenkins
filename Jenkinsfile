@@ -11,8 +11,9 @@ pipeline {
         stage('Build') {
             agent { label 'build && x86-64' }
             steps {
-                sh 'cd composer'
-                sh 'pwd'
+                dir('composer') {
+                    sh 'pwd'
+                }
                 // sh 'docker-compose build'
             }
         }
