@@ -12,6 +12,7 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 dir('composer') {
+                    sh 'echo "abc123" > .env'
                     sh 'docker-compose build'
                 }
             }
