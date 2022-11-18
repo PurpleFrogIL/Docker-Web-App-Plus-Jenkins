@@ -11,8 +11,8 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 dir('composer') {
-                    echo 'Creating .env file'
-                    writeFile file: '.env', text: 'MYSQL_PASSWORD="abc123"'
+                    // echo 'Creating .env file'
+                    // writeFile file: '.env', text: 'MYSQL_PASSWORD="abc123"'
                     sh 'docker build -t app .'
                 }
             }
