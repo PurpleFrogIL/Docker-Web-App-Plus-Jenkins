@@ -1,8 +1,8 @@
-# For Node.JS
-node_modules
+# For Groovy script (Jenkinsfile) linter config
+.groovylintrc.json
 
-# OLD files
-composer.OLD/
+# For Node.JS – Node modules are installed by 'yarn' using 'package.json'
+node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
