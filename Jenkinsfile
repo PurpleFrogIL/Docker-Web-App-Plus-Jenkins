@@ -8,16 +8,16 @@ pipeline {
                     [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub-ec2-user', url: 'git@github.com:PurpleFrogIL/Docker-Web-App-Plus-Jenkins.git']]])
             }
         }
-        stage('Build') {
-            agent { label 'build && x86-64' }
-            steps {
-                dir('composer') {
-                    echo 'Creating .env file'
-                    writeFile file: '.env', text: 'MYSQL_PASSWORD="abc123"'
-                    sh 'docker-compose up -d --build'
-                    sh 'docker-compose down --volume'
-                }
-            }
-        }
+        // stage('Build') {
+        //     agent { label 'build && x86-64' }
+        //     steps {
+        //         dir('composer') {
+        //             echo 'Creating .env file'
+        //             writeFile file: '.env', text: 'MYSQL_PASSWORD="abc123"'
+        //             sh 'docker-compose up -d --build'
+        //             sh 'docker-compose down --volume'
+        //         }
+        //     }
+        // }
     }
 }
