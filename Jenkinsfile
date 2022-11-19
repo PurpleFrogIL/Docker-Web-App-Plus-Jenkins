@@ -10,10 +10,8 @@ pipeline {
         stage('Build') {
             agent { label 'build && x86-64' }
             steps {
-                dir('composer') {
-                    script {
-                        docker.build("todos:${env.BUILD_ID}")
-                    }
+                script {
+                    docker.build("todos:${env.BUILD_ID}", './composer')
                 }
             }
         }
