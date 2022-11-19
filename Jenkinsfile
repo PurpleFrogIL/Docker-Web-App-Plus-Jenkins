@@ -12,7 +12,11 @@ pipeline {
             steps {
                 script {
                     app_image = docker.build("purplefrog/todos-app:${env.BUILD_ID}", './composer')
-                    app_image.push("${env.BUILD_ID}")
+                    docker.withRegistry('', 'DockerHub-Read-Write') {
+                        // app_image.push("${env.BUILD_ID}")
+                        app_image.push()
+
+                    }
                 }
             }
         }
