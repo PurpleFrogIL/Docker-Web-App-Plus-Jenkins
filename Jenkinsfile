@@ -13,7 +13,9 @@ pipeline {
                 dir('composer') {
                     // echo 'Creating .env file'
                     // writeFile file: '.env', text: 'MYSQL_PASSWORD="abc123"'
-                    docker.build("todos:${env.BUILD_ID}")
+                    script {
+                        docker.build("todos:${env.BUILD_ID}")
+                    }
                 }
             }
         }
