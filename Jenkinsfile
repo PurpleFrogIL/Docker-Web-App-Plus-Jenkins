@@ -11,8 +11,6 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 dir('composer') {
-                    // echo 'Creating .env file'
-                    // writeFile file: '.env', text: 'MYSQL_PASSWORD="abc123"'
                     script {
                         docker.build("todos:${env.BUILD_ID}")
                     }
