@@ -11,7 +11,8 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 script {
-                    docker.build("todos:${env.BUILD_ID}", './composer')
+                    app_image = docker.build("todos:${env.BUILD_ID}", './composer')
+                    app_image.push("${env.BUILD_ID}")
                 }
             }
         }
