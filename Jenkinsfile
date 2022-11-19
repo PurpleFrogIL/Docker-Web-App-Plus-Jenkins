@@ -15,6 +15,7 @@ pipeline {
                     docker.withRegistry('', 'DockerHub-Read-Write') {
                         // app_image.push("${env.BUILD_ID}")
                         app_image.push()
+                        app_image.push('latest')
 
                     }
                 }
