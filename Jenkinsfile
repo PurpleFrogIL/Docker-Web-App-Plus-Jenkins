@@ -4,12 +4,12 @@ pipeline {
         DOCKERHUB = credentials('DockerHub-Read-Write')
     }
     stages {
-        stage('Checkout') {
-            agent { label 'build && x86-64' }
-            steps {
-                // checkout scm
-            }
-        }
+        // stage('Checkout') {
+        //     agent { label 'build && x86-64' }
+        //     steps {
+        //         checkout scm
+        //     }
+        // }
         stage('Build') {
             agent { label 'build && x86-64' }
             steps {
