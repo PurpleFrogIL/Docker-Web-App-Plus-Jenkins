@@ -11,7 +11,7 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 script {
-                    app_image = docker.build("purplefrog/todos:${env.BUILD_ID}", './composer')
+                    app_image = docker.build("purplefrog/todos-app:${env.BUILD_ID}", './composer')
                     app_image.push("${env.BUILD_ID}")
                 }
             }
