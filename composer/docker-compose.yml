@@ -5,7 +5,7 @@ services:
         env_file: .env
         image: node:12-alpine
         command: sh -c "yarn install && yarn run dev"
-        restart: always
+        # restart: always
         ports:
             - 3000:3000
         working_dir: /app
@@ -19,7 +19,7 @@ services:
     mysql:
         env_file: .env
         image: mysql:5.7
-        restart: always
+        # restart: always
         volumes:
             - todo-mysql-data:/var/lib/mysql
         environment:
