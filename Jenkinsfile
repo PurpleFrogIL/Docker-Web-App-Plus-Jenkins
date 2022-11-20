@@ -53,7 +53,7 @@ pipeline {
                     sh 'whoami'
                     sh 'pwd'
                     sh 'ls'
-                    sh "cp ${ENV_FILE_PATH} ./composer"
+                    sh 'cp $ENV_FILE_PATH ./composer'
                 }
             }
         }
