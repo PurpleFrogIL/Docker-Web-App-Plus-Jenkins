@@ -16,8 +16,7 @@ pipeline {
             steps {
                 script {
                     echo "DockerHub User: ${DOCKERHUB_USR}"
-                    app_image = docker.build('', './composer')
-                    app_image.tag("${DOCKERHUB_USR}/${DOCKER_IMAGE_NAME}:${env.BUILD_ID}")
+                    app_image = docker.build("${DOCKERHUB_USR}/${DOCKER_IMAGE_NAME}:${env.BUILD_ID}", './composer')
                     docker.withRegistry('', 'DockerHub-Read-Write') {
                         app_image.push()
                         app_image.push('latest')
