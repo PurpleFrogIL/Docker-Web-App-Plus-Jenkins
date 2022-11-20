@@ -49,15 +49,19 @@ pipeline {
             steps {
                 echo 'Running Docker Compose'
                 echo 'Copying .env file'
+
+                sh 'whoami'
+                sh 'pwd'
+                sh 'ls -la'
+
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
-                    sh 'whoami'
-                    sh 'pwd'
-                    sh 'ls -la'
-                    if (fileExists('./composer')) {
-                        echo '.env  file already exists'
-                    }
-                    else {
-                        sh 'cp $ENV_FILE_PATH ./composer'
+                    script {
+                        if (fileExists './composer/.env') {
+                            echo '.env  file already exists'
+                        }
+                        else {
+                            sh 'cp $ENV_FILE_PATH ./composer'
+                        }
                     }
                 }
             }
