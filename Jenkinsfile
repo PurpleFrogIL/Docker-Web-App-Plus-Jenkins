@@ -53,7 +53,7 @@ pipeline {
                     sh 'whoami'
                     sh 'pwd'
                     sh 'ls -la'
-                    if (fileExists './composer') {
+                    if (fileExists('./composer')) {
                         echo '.env  file already exists'
                     }
                     else {
