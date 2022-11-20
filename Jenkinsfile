@@ -44,6 +44,16 @@ pipeline {
                 }
             }
         }
+        stage('Test-Up') {
+            agent { label 'test && x86-64' }
+            steps {
+                echo 'Running Docker Compose'
+                echo 'Copying .env file'
+                withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
+                    sh "cp ${ENV_FILE_PATH} ./composer"
+                }
+            }
+        }
         stage('Test') {
             agent { label 'test && x86-64' }
             steps {
