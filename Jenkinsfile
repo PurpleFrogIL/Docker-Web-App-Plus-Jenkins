@@ -61,8 +61,9 @@ pipeline {
                     }
                 }
 
-                sh 'cd ./composer'
-                sh 'docker-compose up -d'
+                dir('./composer') {
+                    sh 'docker-compose up -d'
+                }
             }
         }
         stage('Test') {
