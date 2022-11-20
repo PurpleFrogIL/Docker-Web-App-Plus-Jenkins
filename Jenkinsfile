@@ -15,8 +15,8 @@ pipeline {
         stage('Build') {
             agent { label 'build && x86-64' }
             steps {
+                echo "Building Docker image: ${APP_IMAGE_TAG}"
                 script {
-                    echo "Building Docker image: ${APP_IMAGE_TAG}"
                     app_image = docker.build(APP_IMAGE_TAG, './composer')
                 }
             }
@@ -24,8 +24,8 @@ pipeline {
         stage('Push') {
             agent { label 'build && x86-64' }
             steps {
+                echo "Pushing Docker image: ${APP_IMAGE_TAG}"
                 script {
-                    echo "Pushing Docker image: ${APP_IMAGE_TAG}"
                     docker.withRegistry('', 'DockerHub-Read-Write') {
                         app_image.push()
                         app_image.push('latest')
@@ -36,8 +36,8 @@ pipeline {
         stage('Test') {
             agent { label 'test && x86-64' }
             steps {
+                echo "Pulling Docker image: ${APP_IMAGE_TAG}"
                 script {
-                    echo "Pulling Docker image: ${APP_IMAGE_TAG}"
                     docker.withRegistry('', 'DockerHub-Read') {
                         app_image.pull()
                     }
