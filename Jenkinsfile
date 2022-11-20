@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Push') {
+        stage('Build-Push') {
             agent { label 'build && x86-64' }
             steps {
                 echo "Pushing Docker image: ${APP_IMAGE_TAG}"
@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
+        stage('Test-Pull') {
             agent { label 'test && x86-64' }
             steps {
                 echo "Pulling Docker image: ${APP_IMAGE_TAG}"
