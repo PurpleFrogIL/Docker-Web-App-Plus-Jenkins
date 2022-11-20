@@ -33,5 +33,16 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            agent { label 'test && x86-64' }
+            steps {
+                script {
+                    echo "Pulling Docker image: ${APP_IMAGE_TAG}"
+                    docker.withRegistry('', 'DockerHub-Read') {
+                        app_image.pull()
+                    }
+                }
+            }
+        }
     }
 }
