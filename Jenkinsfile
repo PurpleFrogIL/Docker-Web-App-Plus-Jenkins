@@ -50,6 +50,7 @@ pipeline {
                 echo 'Running Docker Compose'
                 echo 'Copying .env file'
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
+                    sh 'whoami'
                     sh 'pwd'
                     sh 'ls'
                     sh "cp ${ENV_FILE_PATH} ./composer"
