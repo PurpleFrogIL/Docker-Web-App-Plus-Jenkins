@@ -18,9 +18,9 @@ pipeline {
                 script {
                     echo "Building Docker image: ${APP_IMAGE_TAG}"
                     app_image = docker.build(APP_IMAGE_TAG, './composer')
-                    }
                 }
             }
+        }
         stage('Push') {
             agent { label 'build && x86-64' }
             steps {
@@ -29,6 +29,7 @@ pipeline {
                     docker.withRegistry('', 'DockerHub-Read-Write') {
                         app_image.push()
                         app_image.push('latest')
+                    }
                 }
             }
         }
