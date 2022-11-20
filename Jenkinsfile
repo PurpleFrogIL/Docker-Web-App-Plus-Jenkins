@@ -6,44 +6,44 @@ pipeline {
         APP_IMAGE_TAG = "${DOCKERHUB_USR}/${DOCKER_IMAGE_NAME}:${env.BUILD_ID}"
     }
     stages {
-        stage('Checkout') {
-            agent { label 'build && x86-64' }
-            steps {
-                checkout scm
-            }
-        }
-        stage('Build') {
-            agent { label 'build && x86-64' }
-            steps {
-                echo "Building Docker image: ${APP_IMAGE_TAG}"
-                script {
-                    app_image = docker.build(APP_IMAGE_TAG, './composer')
-                }
-            }
-        }
-        stage('Build-Push') {
-            agent { label 'build && x86-64' }
-            steps {
-                echo "Pushing Docker image: ${APP_IMAGE_TAG}"
-                script {
-                    docker.withRegistry('', 'DockerHub-Read-Write') {
-                        app_image.push()
-                        app_image.push('latest')
-                    }
-                }
-            }
-        }
-        stage('Test-Pull') {
-            agent { label 'test && x86-64' }
-            steps {
-                echo "Pulling Docker image: ${APP_IMAGE_TAG}"
-                script {
-                    docker.withRegistry('', 'DockerHub-Read') {
-                        app_image.pull()
-                    }
-                }
-            }
-        }
+        // stage('Checkout') {
+        //     agent { label 'build && x86-64' }
+        //     steps {
+        //         checkout scm
+        //     }
+        // }
+        // stage('Build') {
+        //     agent { label 'build && x86-64' }
+        //     steps {
+        //         echo "Building Docker image: ${APP_IMAGE_TAG}"
+        //         script {
+        //             app_image = docker.build(APP_IMAGE_TAG, './composer')
+        //         }
+        //     }
+        // }
+        // stage('Build-Push') {
+        //     agent { label 'build && x86-64' }
+        //     steps {
+        //         echo "Pushing Docker image: ${APP_IMAGE_TAG}"
+        //         script {
+        //             docker.withRegistry('', 'DockerHub-Read-Write') {
+        //                 app_image.push()
+        //                 app_image.push('latest')
+        //             }
+        //         }
+        //     }
+        // }
+        // stage('Test-Pull') {
+        //     agent { label 'test && x86-64' }
+        //     steps {
+        //         echo "Pulling Docker image: ${APP_IMAGE_TAG}"
+        //         script {
+        //             docker.withRegistry('', 'DockerHub-Read') {
+        //                 app_image.pull()
+        //             }
+        //         }
+        //     }
+        // }
         stage('Test-Up') {
             agent { label 'test && x86-64' }
             steps {
