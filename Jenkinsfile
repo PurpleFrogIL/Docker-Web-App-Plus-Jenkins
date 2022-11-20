@@ -52,7 +52,7 @@ pipeline {
 
                 sh 'whoami'
                 sh 'pwd'
-                sh 'ls -la'
+                sh 'ls -la ./composer'
 
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
                     script {
