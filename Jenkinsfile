@@ -56,7 +56,7 @@ pipeline {
 
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
                     script {
-                        if (fileExists './composer/.env') {
+                        if (fileExists('./composer/.env')) {
                             echo '.env  file already exists'
                         }
                         else {
