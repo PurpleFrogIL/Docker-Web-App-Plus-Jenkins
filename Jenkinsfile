@@ -50,10 +50,6 @@ pipeline {
                 echo 'Running Docker Compose'
                 echo 'Copying .env file'
 
-                sh 'whoami'
-                sh 'pwd'
-                sh 'ls -la ./composer'
-
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
                     script {
                         if (fileExists('./composer/.env')) {
@@ -64,6 +60,9 @@ pipeline {
                         }
                     }
                 }
+
+                sh 'cd ./composer'
+                sh 'docker-compose up -d'
             }
         }
         stage('Test') {
