@@ -52,8 +52,13 @@ pipeline {
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
                     sh 'whoami'
                     sh 'pwd'
-                    sh 'ls'
-                    sh 'cp $ENV_FILE_PATH ./composer'
+                    sh 'ls -la'
+                    if (fileExists './composer') {
+                        echo '.env  file already exists'
+                    }
+                    else {
+                        sh 'cp $ENV_FILE_PATH ./composer'
+                    }
                 }
             }
         }
