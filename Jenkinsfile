@@ -78,5 +78,35 @@ pipeline {
                 }
             }
         }
+        stage('Pull (Deploy)') {
+            agent { label 'deploy && x86-64' }
+            steps {
+                echo "Pulling Docker image: ${APP_IMAGE_TAG}"
+                script {
+                    docker.withRegistry('', 'DockerHub-Read') {
+                        app_image.pull()
+                    }
+                }
+            }
+        }
+        stage('Run (Deploy)') {
+            agent { label 'deploy && x86-64' }
+            steps {
+                echo 'Copying .env file'
+                withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
+                    script {
+                        if (fileExists('./.env')) {
+                            echo '.env  file already exists. Skipping copy command.'
+                        }
+                        else {
+                            sh 'cp $ENV_FILE_PATH .'
+                        }
+                    }
+                }
+
+                echo 'Running Docker Compose'
+                sh 'docker-compose up -d'
+            }
+        }
     }
 }
