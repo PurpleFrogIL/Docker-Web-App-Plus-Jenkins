@@ -5,8 +5,7 @@ echo "SHELL=$SHELL"
 
 URL="44.211.103.126"
 PORT=3000
-TIMEOUT=10
-EXIT_CODE=1  # bad
+TIMEOUT=2
 
 
 for i in {1..10}
