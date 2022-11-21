@@ -8,17 +8,23 @@ PORT=3000
 TIMEOUT=10
 EXIT_CODE=1  # bad
 
-RESULT=$(
-	curl --include --silent --connect-timeout $TIMEOUT $URL:$PORT |
-	head -n 1 |
-	cut -d ' ' -f 2
-)
 
-if [[ $RESULT -eq 200 ]]; then
-    echo "Got '200 OK'"
-	EXIT_CODE=0  # good
-else
-    echo "Got other value than '200 OK'"
-fi
+for i in {1..10}
+do
+    echo "Try number ${i}"
+    RESULT=$(
+        curl --include --silent --connect-timeout $TIMEOUT $URL:$PORT |
+        head -n 1 |
+        cut -d ' ' -f 2
+    )
 
-exit $EXIT_CODE
+    if [[ $RESULT -eq 200 ]]; then
+        echo "Got '200 OK'"
+        exit 0  # good
+    else
+        echo "Got other value than '200 OK'"
+        sleep 3
+    fi
+done
+
+exit 1
