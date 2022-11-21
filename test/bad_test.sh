@@ -8,7 +8,7 @@ PORT=9999
 TIMEOUT=2
 
 
-for i in {1..10}
+for i in {1..2}
 do
     echo "Try number ${i}"
     RESULT=$(
