@@ -70,7 +70,12 @@ pipeline {
                 echo "Testing using Docker Compose (with image ${APP_IMAGE_TAG})"
                 // sh 'bash ./test/test.sh'
                 sh 'bash ./test/bad_test.sh'
-                sh 'docker-compose down'
+            }
+            post {
+                always {
+                    sh 'docker-compose down'
+                    // deleteDir() /* clean up our workspace */
+                }
             }
         }
     }
