@@ -1,9 +1,10 @@
 pipeline {
     agent none
     environment {
+        APP_VERSION = "${env.BUILD_ID}"
         DOCKERHUB = credentials('DockerHub-Read-Write')
         DOCKER_IMAGE_NAME = 'todos-app'
-        APP_IMAGE_TAG = "${DOCKERHUB_USR}/${DOCKER_IMAGE_NAME}:${env.BUILD_ID}"
+        APP_IMAGE_TAG = "${DOCKERHUB_USR}/${DOCKER_IMAGE_NAME}:${APP_VERSION}"
     }
     stages {
         stage('Checkout') {
