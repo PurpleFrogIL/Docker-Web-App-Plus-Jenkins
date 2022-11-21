@@ -15,7 +15,10 @@ RESULT=$(
 )
 
 if [[ $RESULT -eq 200 ]]; then
+    echo "Got '200 OK'"
 	EXIT_CODE=0  # good
+else
+    echo "Got other value than '200 OK'"
 fi
 
 exit $EXIT_CODE
