@@ -22,7 +22,7 @@ pipeline {
                 }
             }
         }
-        stage('Build-Push') {
+        stage('Push') {
             agent { label 'build && x86-64' }
             steps {
                 echo "Pushing Docker image: ${APP_IMAGE_TAG}"
@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage('Test-Pull') {
+        stage('Pull (Test)') {
             agent { label 'test && x86-64' }
             steps {
                 echo "Pulling Docker image: ${APP_IMAGE_TAG}"
@@ -45,7 +45,7 @@ pipeline {
                 }
             }
         }
-        stage('Test-Up') {
+        stage('Run (Test)') {
             agent { label 'test && x86-64' }
             steps {
                 echo 'Copying .env file'
