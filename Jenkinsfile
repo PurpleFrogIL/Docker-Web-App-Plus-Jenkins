@@ -68,6 +68,7 @@ pipeline {
             agent { label 'test && x86-64' }
             steps {
                 echo "Testing using Docker Compose (with image ${APP_IMAGE_TAG})"
+                sh 'bash ./test/test.sh'
             }
         }
     }
