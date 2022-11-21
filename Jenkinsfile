@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "Building Docker image: ${APP_IMAGE_TAG}"
                 script {
-                    app_image = docker.build(APP_IMAGE_TAG, './composer')
+                    app_image = docker.build(APP_IMAGE_TAG, './app')
                 }
             }
         }
@@ -51,19 +51,17 @@ pipeline {
                 echo 'Copying .env file'
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
                     script {
-                        if (fileExists('./composer/.env')) {
+                        if (fileExists('./.env')) {
                             echo '.env  file already exists. Skipping copy command.'
                         }
                         else {
-                            sh 'cp $ENV_FILE_PATH ./composer'
+                            sh 'cp $ENV_FILE_PATH .'
                         }
                     }
                 }
 
                 echo 'Running Docker Compose'
-                dir('./composer') {
-                    sh 'docker-compose up -d'
-                }
+                sh 'docker-compose up -d'
             }
         }
         stage('Test') {
