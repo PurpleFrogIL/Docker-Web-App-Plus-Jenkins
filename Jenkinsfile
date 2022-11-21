@@ -48,9 +48,7 @@ pipeline {
         stage('Test-Up') {
             agent { label 'test && x86-64' }
             steps {
-                echo 'Running Docker Compose'
                 echo 'Copying .env file'
-
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
                     script {
                         if (fileExists('./composer/.env')) {
@@ -62,6 +60,7 @@ pipeline {
                     }
                 }
 
+                echo 'Running Docker Compose'
                 dir('./composer') {
                     sh 'docker-compose up -d'
                 }
