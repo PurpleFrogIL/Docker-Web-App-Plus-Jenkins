@@ -81,6 +81,8 @@ pipeline {
         stage('Pull (Deploy)') {
             agent { label 'deploy && x86-64' }
             steps {
+                echo 'Stopping running containers...'
+                sh 'docker-compose down'
                 echo "Pulling Docker image: ${APP_IMAGE_TAG}"
                 script {
                     docker.withRegistry('', 'DockerHub-Read') {
