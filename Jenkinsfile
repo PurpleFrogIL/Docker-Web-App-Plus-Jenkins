@@ -52,7 +52,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
                     script {
                         if (fileExists('./composer/.env')) {
-                            echo '.env  file already exists'
+                            echo '.env  file already exists. Skipping copy command.'
                         }
                         else {
                             sh 'cp $ENV_FILE_PATH ./composer'
