@@ -69,6 +69,9 @@ pipeline {
 
                 unstash 'jenkins-stash'
 
+                echo "APP_VERSION=${APP_VERSION}"
+                echo 'Last 4 images:'
+                sh 'docker image list | tail -n 4'
                 echo 'Running Docker Compose'
                 sh 'docker-compose up -d'
             }
