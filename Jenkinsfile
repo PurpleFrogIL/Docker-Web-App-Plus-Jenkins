@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    options {
+        skipDefaultCheckout true
+    }
     environment {
         DOCKER_IMAGE_NAME = 'todos-app'
         APP_VERSION = "${env.BUILD_ID}"
