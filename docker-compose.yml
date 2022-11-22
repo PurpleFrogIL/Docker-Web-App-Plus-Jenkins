@@ -5,7 +5,8 @@ services:
         env_file: .env
         # image: node:12-alpine
         image: purplefrog/todos-app:${APP_VERSION}
-        command: sh -c "yarn install && yarn run dev"
+        # command: sh -c "yarn install && yarn run dev"
+        command: sh -c "yarn run dev"
         # restart: always
         ports:
             - 3000:3000
