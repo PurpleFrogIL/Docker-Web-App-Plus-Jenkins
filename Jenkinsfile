@@ -41,7 +41,7 @@ pipeline {
                 }
             }
         }
-        stage('Pull (Test)') {
+        stage('Test: Pull') {
             agent { label 'test && x86-64' }
             steps {
                 echo "Pulling Docker image: ${APP_IMAGE_TAG}"
@@ -52,7 +52,7 @@ pipeline {
                 }
             }
         }
-        stage('Run (Test)') {
+        stage('Test: Run App') {
             agent { label 'test && x86-64' }
             steps {
                 echo 'Copying .env file'
@@ -73,7 +73,7 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
-        stage('Test') {
+        stage('Test: Run Test') {
             agent { label 'test && x86-64' }
             steps {
                 // unstash 'test-stash'
@@ -88,7 +88,7 @@ pipeline {
                 }
             }
         }
-        stage('Pull (Deploy)') {
+        stage('Deploy: Pull') {
             agent { label 'deploy && x86-64' }
             steps {
                 echo 'Stopping running containers...'
@@ -102,7 +102,7 @@ pipeline {
                 }
             }
         }
-        stage('Run (Deploy)') {
+        stage('Deploy: Run App') {
             agent { label 'deploy && x86-64' }
             steps {
                 echo 'Copying .env file'
