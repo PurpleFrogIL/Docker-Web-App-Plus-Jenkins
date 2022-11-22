@@ -14,8 +14,9 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 checkout scm
-                // Save the 'docker-compose.yml' file for later stages
-                stash includes: 'docker-compose.yml', name: 'jenkins-stash'
+                // Save needed files for later stages
+                stash includes: 'docker-compose.yml', name: 'docker-compose-stash'
+                stash includes: 'test', name: 'test-stash'
             }
         }
         stage('Build') {
@@ -65,12 +66,7 @@ pipeline {
                     }
                 }
 
-                dir('jenkins-stash') {
-                    unstash 'jenkins-stash'
-                }
-
-                echo 'Copy docker-compose.yml'
-                sh 'cp ./jenkins-stash/docker-compose.yml .'
+                unstash 'docker-compose-stash'
 
                 echo 'Running Docker Compose'
                 sh 'docker-compose up -d'
@@ -79,6 +75,7 @@ pipeline {
         stage('Test') {
             agent { label 'test && x86-64' }
             steps {
+                unstash 'test-stash'
                 echo "Testing using Docker Compose (with image ${APP_IMAGE_TAG})"
                 sh 'bash ./test/test.sh'
                 // sh 'bash ./test/bad_test.sh'
