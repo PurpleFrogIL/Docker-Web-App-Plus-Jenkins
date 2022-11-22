@@ -83,7 +83,8 @@ pipeline {
             }
             post {
                 always {
-                    sh 'docker-compose down'
+                    echo 'Stop containers'
+                    // sh 'docker-compose down'
                     // deleteDir() /* clean up our workspace */
                 }
             }
