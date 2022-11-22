@@ -16,7 +16,7 @@ pipeline {
                 checkout scm
                 // Save needed files for later stages
                 // stash includes: 'docker-compose.yml', name: 'docker-compose-stash'
-                stash includes: 'docker-compose.yml, test', name: 'jenkins-stash'
+                stash includes: 'docker-compose.yml,test/*', name: 'jenkins-stash'
                 // stash includes: 'test', name: 'test-stash'
             }
         }
