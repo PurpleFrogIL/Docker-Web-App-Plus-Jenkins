@@ -16,7 +16,7 @@ pipeline {
                 checkout scm
                 // Save needed files for later stages
                 stash includes: 'docker-compose.yml', name: 'docker-compose-stash'
-                stash includes: 'test', name: 'test-stash'
+                // stash includes: 'test', name: 'test-stash'
             }
         }
         stage('Build') {
@@ -75,7 +75,7 @@ pipeline {
         stage('Test') {
             agent { label 'test && x86-64' }
             steps {
-                unstash 'test-stash'
+                // unstash 'test-stash'
                 echo "Testing using Docker Compose (with image ${APP_IMAGE_TAG})"
                 sh 'bash ./test/test.sh'
                 // sh 'bash ./test/bad_test.sh'
