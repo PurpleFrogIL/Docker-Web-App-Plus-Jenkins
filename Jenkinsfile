@@ -14,6 +14,8 @@ pipeline {
             agent { label 'build && x86-64' }
             steps {
                 checkout scm
+                // Save the 'docker-compose.yml' file for later stages
+                stash includes: 'docker-compose.yml', name: 'jenkins-stash'
             }
         }
         stage('Build') {
@@ -62,6 +64,13 @@ pipeline {
                         }
                     }
                 }
+
+                dir('jenkins-stash') {
+                    unstash 'jenkins-stash'
+                }
+
+                echo 'Copy docker-compose.yml'
+                sh 'cp ./jenkins-stash/docker-compose.yml .'
 
                 echo 'Running Docker Compose'
                 sh 'docker-compose up -d'
