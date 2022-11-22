@@ -89,6 +89,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage('Deploy: Pull') {
             agent { label 'deploy && x86-64' }
             steps {
@@ -122,5 +123,6 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
+        */
     }
 }
