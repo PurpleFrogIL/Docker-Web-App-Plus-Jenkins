@@ -9,7 +9,7 @@ services:
         command: sh -c "yarn run dev"
         # restart: always
         ports:
-            - 3000:3000
+            - 80:80
         working_dir: /app
         # volumes:
         #     - ./app:/app
