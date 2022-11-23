@@ -10,7 +10,7 @@ pipeline {
         APP_IMAGE_TAG = "${DOCKERHUB_USR}/${DOCKER_IMAGE_NAME}:${APP_VERSION}"
     }
     stages {
-        stage('Checkout') {
+        stage('Build: Checkout') {
             agent { label 'build && x86-64' }
             steps {
                 checkout scm
@@ -19,7 +19,7 @@ pipeline {
                 stash includes: 'test/*', name: 'test-dir'
             }
         }
-        stage('Build') {
+        stage('Build: Build') {
             agent { label 'build && x86-64' }
             steps {
                 echo "Building Docker image: ${APP_IMAGE_TAG}"
@@ -28,7 +28,7 @@ pipeline {
                 }
             }
         }
-        stage('Push') {
+        stage('Build: Push') {
             agent { label 'build && x86-64' }
             steps {
                 echo "Pushing Docker image: ${APP_IMAGE_TAG}"
