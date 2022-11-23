@@ -15,10 +15,8 @@ pipeline {
             steps {
                 checkout scm
                 // Save needed files for later stages
-                // stash includes: 'docker-compose.yml', name: 'docker-compose-stash'
                 stash includes: 'docker-compose.yml', name: 'docker-compose-file'
                 stash includes: 'test/*', name: 'test-dir'
-                // stash includes: 'test', name: 'test-stash'
             }
         }
         stage('Build') {
@@ -68,6 +66,7 @@ pipeline {
                     }
                 }
 
+                echo 'Copy docker compose file'
                 unstash 'docker-compose-file'
 
                 echo "APP_VERSION=${APP_VERSION}"
@@ -93,7 +92,6 @@ pipeline {
                 }
             }
         }
-        /*
         stage('Deploy: Pull') {
             agent { label 'deploy && x86-64' }
             steps {
@@ -123,10 +121,12 @@ pipeline {
                     }
                 }
 
+                echo 'Copy docker compose file'
+                unstash 'docker-compose-file'
+
                 echo 'Running Docker Compose'
                 sh 'docker-compose up -d'
             }
         }
-        */
     }
 }
