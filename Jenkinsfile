@@ -16,8 +16,8 @@ pipeline {
                 checkout scm
                 // Save needed files for later stages
                 // stash includes: 'docker-compose.yml', name: 'docker-compose-stash'
-                stash includes: 'docker-compose.yml,test/*', name: 'jenkins-stash'
-                stash includes: 'docker-compose.yml,test/*', name: 'jenkins-stash-2'
+                stash includes: 'docker-compose.yml', name: 'docker-compose-file'
+                stash includes: 'test/*', name: 'test-dir'
                 // stash includes: 'test', name: 'test-stash'
             }
         }
@@ -68,7 +68,7 @@ pipeline {
                     }
                 }
 
-                unstash 'jenkins-stash'
+                unstash 'docker-compose-file'
 
                 echo "APP_VERSION=${APP_VERSION}"
                 echo 'Last 4 images:'
@@ -80,7 +80,7 @@ pipeline {
         stage('Test: Run Test') {
             agent { label 'test && x86-64' }
             steps {
-                // unstash 'test-stash'
+                unstash 'test-dir'
                 echo "Testing using Docker Compose (with image ${APP_IMAGE_TAG})"
                 sh 'bash ./test/test.sh'
                 // sh 'bash ./test/bad_test.sh'
