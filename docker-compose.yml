@@ -6,7 +6,8 @@ services:
         # image: node:12-alpine
         image: purplefrog/todos-app:${APP_VERSION}
         # command: sh -c "yarn install && yarn run dev"
-        command: sh -c "yarn run dev"
+        # command: sh -c "yarn run dev"
+        command: ["node", "/app/src/index.js"]
         # restart: always
         ports:
             - 80:80
