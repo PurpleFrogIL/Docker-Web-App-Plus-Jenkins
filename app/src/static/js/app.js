@@ -7,6 +7,11 @@ function App() {
                     <h5 className="text-center">This is a Fork by Dror Felman</h5>
                 </Col>
             </Row>
+            <Row>
+                <Col md={{ offset: 3, span: 6 }}>
+                    <h5 className="text-center">App Version: APP_VERSION</h5>
+                </Col>
+            </Row>
             <Row><p></p></Row>
             <Row><p></p></Row>
             <Row><p></p></Row>
