@@ -24,7 +24,7 @@ pipeline {
             steps {
                 echo "Building Docker image: ${APP_IMAGE_TAG}"
                 script {
-                    app_image = docker.build(APP_IMAGE_TAG, './app')
+                    app_image = docker.build(APP_IMAGE_TAG, "--build-arg VERSION=${APP_VERSION} ./app")
                 }
             }
         }
