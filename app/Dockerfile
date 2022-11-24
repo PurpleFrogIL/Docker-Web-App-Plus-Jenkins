@@ -9,7 +9,7 @@ RUN yarn add nodemon
 
 ARG VERSION=null
 RUN echo "${VERSION}" > version.txt
-# RUN sed "s/APP_VERSION/${VERSION}/" /app/src/static/js/app.js
-RUN sed -i "s/APP_VERSION/123/" /app/src/static/js/app.js
+RUN sed -i "s/APP_VERSION/${VERSION}/" /app/src/static/js/app.js
+# RUN sed -i "s/APP_VERSION/123/" /app/src/static/js/app.js
 
 CMD ["node", "/app/src/index.js"]
