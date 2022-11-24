@@ -10,5 +10,6 @@ RUN yarn add nodemon
 # RUN rm package.json; rm yarn.lock
 
 RUN echo "${VERSION}" > version.txt
+RUN sed -n "s/APP_VERSION/${VERSION}/" ./src/static/js/app.js
 
 CMD ["node", "/app/src/index.js"]
