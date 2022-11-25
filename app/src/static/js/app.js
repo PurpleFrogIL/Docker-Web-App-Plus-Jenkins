@@ -4,12 +4,22 @@ function App() {
         <Container>
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
-                    <h5 className="text-center">This is a Fork by Dror Felman</h5>
+                    <h1 className="text-center">Todo App</h1>
                 </Col>
             </Row>
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
-                    <h5 className="text-center">App Version: APP_VERSION</h5>
+                    <h2 className="text-center">App Version: APP_VERSION</h2>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={{ offset: 3, span: 6 }}>
+                    <h4 className="text-center">This is a Fork by Dror Felman</h4>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={{ offset: 3, span: 6 }}>
+                    <h5 className="text-center">Source: https://github.com/docker/getting-started</h5>
                 </Col>
             </Row>
             <Row><p></p></Row>
