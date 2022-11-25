@@ -3,17 +3,11 @@ version: "3.7"
 services:
     app:
         env_file: .env
-        # image: node:12-alpine
         image: purplefrog/todos-app:${APP_VERSION}
-        # command: sh -c "yarn install && yarn run dev"
-        # command: sh -c "yarn run dev"
         command: ["node", "/app/src/index.js"]
-        # restart: always
         ports:
             - 80:80
         working_dir: /app
-        # volumes:
-        #     - ./app:/app
         environment:
             MYSQL_HOST: mysql
             MYSQL_USER: root
@@ -22,7 +16,6 @@ services:
     mysql:
         env_file: .env
         image: mysql:5.7
-        # restart: always
         volumes:
             - todo-mysql-data:/var/lib/mysql
         environment:
