@@ -12,6 +12,8 @@ function App() {
                     <h2 className="text-center">App Version: APP_VERSION</h2>
                 </Col>
             </Row>
+            <Row><p></p></Row>
+            <Row><p></p></Row>
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
                     <h4 className="text-center">This is a Fork by Dror Felman</h4>
