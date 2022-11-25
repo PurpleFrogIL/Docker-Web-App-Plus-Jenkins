@@ -16,12 +16,7 @@ function App() {
             <Row><p></p></Row>
             <Row>
                 <Col md={{ offset: 3, span: 6 }}>
-                    <h4 className="text-center">This is a Fork by Dror Felman</h4>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={{ offset: 3, span: 6 }}>
-                    <h5 className="text-center">Source: https://github.com/docker/getting-started</h5>
+                    <h4 className="text-center">This is a Fork by Dror Felman (<a href="https://github.com/docker/getting-started">Source</a>)</h4>
                 </Col>
             </Row>
             <Row><p></p></Row>
