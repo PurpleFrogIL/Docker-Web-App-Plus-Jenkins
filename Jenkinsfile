@@ -5,7 +5,7 @@ pipeline {
         skipDefaultCheckout true
         // Global timeout to prevent job continueing forever in case of problem
         // Amount of time of no activity in logs after which the job is aborted
-        timeout(activity: true, time: 1, unit: 'SECONDS')
+        timeout(activity: true, time: 1, unit: 'MINUTES')
     }
     environment {
         DOCKER_IMAGE_NAME = 'todos-app'
