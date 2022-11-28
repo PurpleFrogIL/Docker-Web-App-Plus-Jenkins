@@ -4,7 +4,8 @@ pipeline {
         // Prevent git checkout occuring on every stage
         skipDefaultCheckout true
         // Global timeout to prevent job continueing forever in case of problem
-        timeout(time: 10, unit: 'SECONDS')
+        // Amount of time of no activity in logs after which the job is aborted
+        timeout(activity: true, time: 10, unit: 'SECONDS')
     }
     environment {
         DOCKER_IMAGE_NAME = 'todos-app'
