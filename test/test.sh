@@ -4,7 +4,6 @@ echo "Starting test script..."
 echo "SHELL=$SHELL"
 
 URL="44.211.103.126"
-# PORT=3000
 PORT=80
 TIMEOUT=2
 
