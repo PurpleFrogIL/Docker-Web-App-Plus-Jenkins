@@ -98,7 +98,7 @@ pipeline {
             }
         }
         stage('Deploy: Pull') {
-            agent { label 'deploy && x86-64' }
+            agent { label 'production && x86-64' }
             steps {
                 echo 'Stopping running containers...'
                 // Stop only if containers are running
@@ -112,7 +112,7 @@ pipeline {
             }
         }
         stage('Deploy: Run App') {
-            agent { label 'deploy && x86-64' }
+            agent { label 'production && x86-64' }
             steps {
                 echo 'Copying .env file'
                 withCredentials([file(credentialsId: 'DWAPJ-env', variable: 'ENV_FILE_PATH')]) {
