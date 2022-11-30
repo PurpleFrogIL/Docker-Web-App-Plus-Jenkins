@@ -7,6 +7,7 @@ RUN rm package.json yarn.lock
 
 ARG VERSION=null
 RUN echo "${VERSION}" > version.txt
+# Write the version in the web-app file
 RUN sed -i "s/APP_VERSION/${VERSION}/" /app/src/static/js/app.js
 
 CMD ["node", "/app/src/index.js"]
