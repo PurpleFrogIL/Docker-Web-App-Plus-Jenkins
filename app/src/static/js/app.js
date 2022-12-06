@@ -1,3 +1,5 @@
+// This is a dummy comment meant to test pipeline auto-trigger
+
 function App() {
     const { Container, Row, Col } = ReactBootstrap;
     return (
