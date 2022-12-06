@@ -15,7 +15,7 @@ app.put('/items/:id', updateItem);
 app.delete('/items/:id', deleteItem);
 
 db.init().then(() => {
-    app.listen(80, () => console.log('Listening on port 80'));
+    app.listen(81, () => console.log('Listening on port 81'));
 }).catch((err) => {
     console.error(err);
     process.exit(1);
